@@ -1,4 +1,7 @@
-
+---
+title: About
+date: 2025-08-15 21:42:00
+---
 
 `printf("Hello, World!\n");`
 
