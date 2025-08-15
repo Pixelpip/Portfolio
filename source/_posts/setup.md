@@ -59,6 +59,8 @@ hexo server
 
 Now, open your browser and go to http://localhost:4000. You should see the default Hexo blog. Awesome!
 
+***
+
 ## Step 2: Applying the Cactus Theme 🎨
 
 The default theme is fine, but we want that clean Cactus look.
@@ -80,6 +82,8 @@ theme: cactus
 ```
 
 Restart the hexo server (use Ctrl+C in the terminal to stop it first), and refresh your browser. Your blog should now have the minimalist Cactus aesthetic. You can further customize the theme by editing its own configuration file at `themes/cactus/_config.yml`.
+
+***
 
 ## Step 3: Deploying with Vercel 🌐
 
@@ -104,6 +108,8 @@ git push -u origin main
 8. Click Deploy.
 
 In a minute or two, your site will be live on a `.vercel.app` domain. Even better, every time you push a new commit to your main branch on GitHub, Vercel will automatically redeploy your site with the changes.
+
+***
 
 ## Step 4: Adding a Free Custom Domain
 
