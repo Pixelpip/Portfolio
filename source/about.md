@@ -1,19 +1,8 @@
----
-title: Booting Up... Hello, World!
-date: 2025-08-11 18:45:00
-tags:
-  - Introduction
-  - Hello World
-  - Computer Science
-  - Linux
-  - Nand2Tetris
-categories:
-  - Personal
----
+
 
 `printf("Hello, World!\n");`
 
-It feels only right to start my first blog post with that iconic line. If you're reading this, welcome to my new corner of the internet! This is a mandatory "first post" as a chance for me to introduce myself and set the stage for what's to come.
+It feels only right to start my first blog post with that iconic line. If you're reading this, welcome to my new corner of the internet! This is a mandatory "About section" as a chance for me to introduce myself and set the stage for what's to come.
 
 ### Who Am I?
 
