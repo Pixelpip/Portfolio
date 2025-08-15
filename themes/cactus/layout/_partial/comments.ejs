@@ -12,3 +12,24 @@
         </div>
     </div>
 <% } %>
+
+<%# --- GISCUS --- %>
+<% if(page.comments && theme.giscus && theme.giscus.enable){ %>
+    <div class="blog-post-comments">
+       <script src="https://giscus.app/client.js"
+        data-repo="pixelpip/Portfolio"
+        data-repo-id="R_kgDOPboscg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOPboscs4CuNwx"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+<% } %>

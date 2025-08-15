@@ -212,3 +212,15 @@ cdn:
   font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
   justified_gallery_css: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css
   justified_gallery_js: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js
+
+
+# Giscus Comments
+giscus:
+  enable: true
+  repo: pixelpip/Portfolio
+  repo_id: R_kgDOPboscg
+  category: Blog Comments
+  category_id: DIC_kwDOPboscs4CuNwx
+  mapping: pathname
+  theme: preferred_color_scheme # This automatically handles light/dark mode
+  lang: en
