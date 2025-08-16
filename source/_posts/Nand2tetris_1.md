@@ -20,15 +20,34 @@ The project uses a simple Hardware Description Language (HDL) to define the chip
 
 It was an amazing "aha!" moment to see complex boolean logic emerge from the composition of simpler parts. Here are my implementations for each of the gates.
 
-### Not
+***
 
-The simplest gate. A NOT is just a NAND with its inputs tied together. If `in` is 0, `Nand(0,0)` is 1. If `in` is 1, `Nand(1,1)` is 0.
+## AND
+This is a simple gate the produces the output of 1 when both the inputs to the gate is 1 in all other cases the output produced remains 0.
+
+Implementing the gate just using Nand gates is quite simple too , just take the inputs a and b into the Nand gate once then apply the Nand gate on the output produced by the first gate.
+
+Below is the Nand2tetris HDL implementation of the gate.
 
 ```hdl
-/**
- * Not gate:
- * out = not in
- */
+
+CHIP And {
+    IN a, b;
+    OUT out;
+    
+    PARTS:
+    Nand(a=a , b=b , out=out1);
+    Nand(a=out1, b=out1, out=out);
+  
+}
+
+```
+
+## NOT
+
+The is the simplest gate. A NOT is just a NAND with the same input applied across both the ends of the gate together. If `in` is 0, `Nand(0,0)` is 1. If `in` is 1, `Nand(1,1)` is 0.
+
+```hdl
 
 CHIP Not {
     IN in;
@@ -37,3 +56,46 @@ CHIP Not {
     PARTS:
     Nand(a=in, b=in, out=out);
 }
+```
+
+## OR
+
+OR gate in boolean algebra acts as a gate for adding two boolean numbers. It produces an output of 0 when both the inputs are zero and 1 in all other cases.
+
+To build a OR gate just Nand gate we will have to use 3 Nand gates two Nand gates with inputs being a and b respectively what this effectively does is convert the inputs into each of its complement and the complements are then fed into the 3rd Nand gate which will produce the output of a+b or a OR b.
+
+```hdl
+
+CHIP Or {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Nand(a=a , b=a , out=nota);
+    Nand(a=b , b=b , out=notb);
+    Nand(a=nota, b=notb , out=out);
+}
+
+```
+
+## XOR
+
+Xor is a gate that produces a output of one when the values of a and b are different i.e if a is 1 and b is 0 or a is 0 and b is 1 the output is 1 in all other cases the output is 0.
+
+```hdl 
+
+CHIP Xor {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Not(in=a,out=nota);
+    Not(in=b , out=notb );
+    And(a=a , b=notb , out=aAndNotb );
+    And(a=nota , b=b , out=bAndNota );
+    Or(a=aAndNotb , b=bAndNota , out=out );
+}
+
+```
+
+
