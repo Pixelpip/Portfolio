@@ -97,5 +97,42 @@ CHIP Xor {
 }
 
 ```
+## MUX
+
+A multiplexer (or mux) is a fundamental digital switch with two data inputs (A and B) and one "select" input (SEL). 
+
+The select input's value determines which data input is passed to the single output; for example, if SEL is 0, the mux outputs A, and if SEL is 1, it outputs B. 
 
 
+```hdl
+
+CHIP Mux {
+    IN a, b, sel;
+    OUT out;
+
+    PARTS:
+    Not(in=sel , out=notsel );
+    And(a=a, b=notsel, out=i1);
+    And(a=b , b=sel , out=i2);
+    Or(a=i1 , b=i2, out=out );
+}
+
+```
+
+## DEMUX
+
+A demultiplexer (demux) performs the opposite function of a multiplexer, acting as a data distributor. It takes a single data input and routes it to one of two or more outputs, based on the value of a "select" bit. The select bit determines which output channel receives the data, while all other outputs are set to 0.
+
+```hdl
+CHIP DMux {
+    IN in, sel;
+    OUT a, b;
+
+    PARTS:
+    Not(in=sel, out=notsel);
+    And(a=in, b=notsel , out=a);
+    And(a=in, b=sel, out=b);
+    
+}
+
+```
