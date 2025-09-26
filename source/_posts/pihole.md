@@ -12,7 +12,7 @@ categories:
   - Tutorials
 ---
 
-# Installing Pi-hole with DietPi and Setting it up for devices individually
+
 
 I wanted to try out pihole just for the fun of it , but recently I realised I'm scrolling too much of twitter and youtube so i wanted to try out a network level website blocker.
 I assumed it would be a fairly straight-forward thing to do as DietPi makes it easy to install pihole anyway. But later I realised that it a tad bit difficult to do it because nearly all the tutorials I browsed through all gave a walkthrough on how to set it up at the router so that all your devices connected to the Wifi network would use the Pi zero as their downstream DNS . The thing I wanted though was how to use the Pi just as a DNS for the devices I use at home and not all other devices , for which there were no tutorials which I came across so this is my attempt at making one. 
