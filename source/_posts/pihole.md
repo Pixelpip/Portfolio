@@ -1,3 +1,17 @@
+---
+title: "Installing Pi-hole with DietPi and Setting it up for devices individually"
+date: 2025-09-26 19:05:00
+tags:
+  - Pi-hole
+  - DietPi
+  - Raspberry Pi
+  - DNS
+  - Ad Blocking
+  - Network
+categories:
+  - Tutorials
+---
+
 # Installing Pi-hole with DietPi and Setting it up for devices individually
 
 I wanted to try out pihole just for the fun of it , but recently I realised I'm scrolling too much of twitter and youtube so i wanted to try out a network level website blocker.
