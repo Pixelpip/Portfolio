@@ -12,22 +12,22 @@ categories:
   - Tutorials
 ---
 
-Ever wanted a blazing-fast, professional-looking blog that's completely free to host and fully under your control? In this post, I'm breaking down my entire setup. We'll go from an empty folder to a deployed blog using a powerful stack: the **Hexo** static site generator, the minimalist **Cactus** theme, and seamless hosting on **Vercel**.
+Ever wanted a blazing-fast, professional-looking blog that's completely free to host and fully under your control? In this post, I'm breaking down my entire setup. We'll go from an empty folder to a deployed blog using a powerful stack: the **Hexo** static site generator, the minimalist **Cactus** theme, and hosting on **Vercel**.
 
-As a bonus, I'll show you how I snagged a custom domain for free using the **GitHub Student Developer Pack**. Let's get started! 🚀
+As a bonus, I'll show you how I got a custom domain for free using the **GitHub Student Developer Pack**. Let's get started! 
 
 ***
 
 ## The Stack: Why These Tools?
 
 * **Hexo:** A fast and simple static site generator powered by Node.js. You write posts in Markdown, and Hexo compiles them into a complete website with plain HTML, CSS, and JavaScript. No databases, no slow server-side rendering.
-* **Cactus Theme:** A clean, minimalist, and responsive theme for Hexo. It puts the focus squarely on the content, which is exactly what I wanted.
+* **Cactus Theme:** A clean, minimalist, and responsive theme for Hexo.
 * **Vercel:** A cloud platform for static sites. Their free tier is incredibly generous, and deployment is as simple as a `git push`.
-* **GitHub Student Developer Pack:** An amazing bundle of free tools and services for students. It includes free domains from partners, which is the perfect finishing touch for a personal blog.
+* **GitHub Student Developer Pack:** A bundle of free tools and services for students. It includes free domains from name.com , namcheap and few others, which is good enough for a personal protfolio.
 
 ***
 
-## Prerequisites 🛠️
+## Prerequisites 
 
 Before we dive in, make sure you have a few things ready:
 
@@ -61,7 +61,7 @@ Now, open your browser and go to http://localhost:4000. You should see the defau
 
 ***
 
-## Step 2: Applying the Cactus Theme 🎨
+## Step 2: Applying the Cactus Theme 
 
 The default theme is fine, but we want that clean Cactus look.
 
@@ -85,9 +85,7 @@ Restart the hexo server (use Ctrl+C in the terminal to stop it first), and refre
 
 ***
 
-## Step 3: Deploying with Vercel 🌐
-
-This is where the magic happens. Vercel makes hosting a static site almost effortless.
+## Step 3: Deploying with Vercel 
 
 1. Push your project to GitHub. Create a new, empty repository on GitHub and push your Hexo blog's code to it.
 2. Make sure you're in your blog's directory:

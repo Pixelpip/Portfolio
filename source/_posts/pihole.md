@@ -14,13 +14,14 @@ categories:
 
 
 
-I wanted to try out pihole just for the fun of it , but recently I realised I'm scrolling too much of twitter and youtube so i wanted to try out a network level website blocker.
-I assumed it would be a fairly straight-forward thing to do as DietPi makes it easy to install pihole anyway. But later I realised that it a tad bit difficult to do it because nearly all the tutorials I browsed through all gave a walkthrough on how to set it up at the router so that all your devices connected to the Wifi network would use the Pi zero as their downstream DNS . The thing I wanted though was how to use the Pi just as a DNS for the devices I use at home and not all other devices , for which there were no tutorials which I came across so this is my attempt at making one. 
+SO since a very long time I  wanted to try out pihole just for the fun of it but never took action to actually try it, but recently I realised I'm scrolling too much of twitter and youtube so i wanted to try out a network level site blocker.
+I assumed it would be a fairly straight-forward thing to do as DietPi makes it easy to install pihole anyway. But later I realised that it a tad bit difficult to do it because nearly all the tutorials I browsed through all gave a walkthrough on how to set it up at the router so that all your devices connected to the Wifi network would use the Pi zero as their downstream DNS . The thing I wanted though was how to use the Pi just as a DNS for the devices I use at home and not all other devices, for which there were no tutorials which I came across so this is my attempt at making one.
+Though there is the solution to just use a public DNS like 8.8.8.8 on other devices but thats too much of a hassle. 
 
 
 ## Part 1: Installing Pi-hole on the Raspberry Pi Zero 2W
 
-I'm using DietPi, a lightweight and optimized OS for SBCs like the Raspberry Pi, which makes the Pi-hole installation a breeze via its included software manager.
+I'm using DietPi, a lightweight and optimized Linux distro for SBCs like the Raspberry Pi, which makes the Pi-hole installation a breeze via its included software manager.
 
 ### Step 1: Initial Setup and Software Selection
 
@@ -66,11 +67,11 @@ For this to work reliably, your device needs a fixed network configuration so it
 
 ### The Problem with DHCP (Automatic IP)
 
-When a device is set to Automatic (DHCP), it gets its IP and DNS server from the router. The router usually tells it to use the router's IP as the DNS, bypassing your Pi-hole.
+When a device is set to Automatic (DHCP), it gets its IP and DNS server from the router. The router usually tells it to use the router's preferred DNS, bypassing your Pi-hole.
 
 ### The Simple Solution: Manual Network Configuration
 
-To bypass the router's default DNS settings and point a device directly to the Pi-hole, you must set the device's IP configuration manually.
+To bypass the router's default DNS and point a device directly to the Pi-hole, you must set the device's IP configuration manually.
 
 Here is the process, using an Ubuntu device as an example:
 
