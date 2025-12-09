@@ -28,6 +28,6 @@ I'm starting this blog for a few reasons. First, it's a way for me to document m
 I'm always open to discussion, collaboration, or just a good tech chat. You can find me in a couple of places:
 
 * **GitHub:** Check out my projects at [github.com/pixelpip](https://github.com/pixelpip)
-* **Email:** Feel free to reach out at [atu@kamath.app](mailto:atu@kamath.app) or [athulkamathg5@gmail.com](mailto:athulkamathg5@gmail.com)
+* **Email:** Feel free to reach out at [athulkamathg5@gmail.com](mailto:athulkamathg5@gmail.com)
 
 Thanks for stopping by.
