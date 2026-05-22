@@ -12,7 +12,8 @@ categories:
   - Tutorials
 ---
 
-Ever wanted a blazing-fast, professional-looking blog that's completely free to host and fully under your control? In this post, I'm breaking down my entire setup. We'll go from an empty folder to a deployed blog using a powerful stack: the **Hexo** static site generator, the minimalist **Cactus** theme, and hosting on **Vercel**.
+I've always found static site generators to be somewhat cool for the reason that it makes writing blogs so much smoother because everything is just plain markdown which makes writing the main focus and also the simplicity and elegance of web pages which can be biuilt using them, I chose **Hexo** because I wanted to try out the **Cactus** theme which it supported and you are probably viweing it in action when reading this.
+
 
 As a bonus, I'll show you how I got a custom domain for free using the **GitHub Student Developer Pack**. Let's get started! 
 
@@ -22,7 +23,7 @@ As a bonus, I'll show you how I got a custom domain for free using the **GitHub 
 
 * **Hexo:** A fast and simple static site generator powered by Node.js. You write posts in Markdown, and Hexo compiles them into a complete website with plain HTML, CSS, and JavaScript. No databases, no slow server-side rendering.
 * **Cactus Theme:** A clean, minimalist, and responsive theme for Hexo.
-* **Vercel:** A cloud platform for static sites. Their free tier is incredibly generous, and deployment is as simple as a `git push`.
+* **Vercel:** A cloud platform for static sites. Their free tier is incredibly generous and more than enough for a Portfolio/blog site.
 * **GitHub Student Developer Pack:** A bundle of free tools and services for students. It includes free domains from name.com , namcheap and few others, which is good enough for a personal protfolio.
 
 ***
@@ -44,7 +45,7 @@ First things first, let's get Hexo running locally. Open your terminal and run t
 
 ```bash
 # Install the Hexo CLI (Command Line Interface) globally
-npm install -g hexo-cli
+sudo npm install -g hexo-cli
 
 # Create a new blog directory and navigate into it
 hexo init my-blog
@@ -57,7 +58,7 @@ npm install
 hexo server 
 ```
 
-Now, open your browser and go to http://localhost:4000. You should see the default Hexo blog. Awesome!
+Now, open your browser and go to http://localhost:4000. You should see the default Hexo blog.
 
 ***
 
@@ -81,7 +82,7 @@ theme: landscape
 theme: cactus
 ```
 
-Restart the hexo server (use Ctrl+C in the terminal to stop it first), and refresh your browser. Your blog should now have the minimalist Cactus aesthetic. You can further customize the theme by editing its own configuration file at `themes/cactus/_config.yml`.
+Restart the hexo server and refresh your browser. Your blog should now have the minimalist Cactus aesthetic. You can further customize the theme by editing its own configuration file at `themes/cactus/_config.yml`.
 
 ***
 
@@ -111,7 +112,7 @@ In a minute or two, your site will be live on a `.vercel.app` domain. Even bette
 
 ## Step 4: Adding a Free Custom Domain
 
-A `.vercel.app` URL is cool, but a custom domain is the final professional touch.
+A `.vercel.app` URL is cool, but a custom domain would make you look even cooler or maybe use the domain for your own custom email address.
 
 - Get the Pack: If you're a student, head over to the GitHub Education page and apply. It's a quick process.
 - Claim Your Domain: Once approved, browse the offers for a free domain name from partners like Namecheap or .TECH (I had bought a .app domain from name.com for the first time). Follow their instructions to register your domain for one year, completely free.
@@ -125,4 +126,4 @@ Connect the Domain to Vercel:
 
 DNS changes can take a little while to propagate across the internet, but soon your blog will be accessible via your very own custom domain.
 
-> And that's it! You now have a professional, fast, and free blog that you have complete ownership of. Happy writing! 
+> And that's it! You now have a professional, fast, and free blog that you have complete ownership of.
