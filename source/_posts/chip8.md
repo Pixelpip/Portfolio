@@ -99,7 +99,7 @@ Then we need to make the PC point to two places above in the RAM so that the nex
 - ```NNN``` this variable is used to specify the 12 bit range of the address to jump to 
 - ```KK``` it is a 8bit long number which is to be stored within the general purpose registers.
 - ```n``` this is used to find how many rows tall each sprite is 
-- ```X & Y`` these are pointers which tell us which general purpose register(V[]) to use
+- ```X & Y``` these are pointers which tell us which general purpose register(V[]) to use
 
 Now onto the best part , processing the opcodes . After reffering to the github repo I mentioned earlier , there all the OPcodes were divided based on their Hexadecimal digits and based on that they were processed using switch cases .
 
