@@ -145,6 +145,7 @@ So that was my writing on how I implemented a emulator , it was easier than I ex
 
 * [Youtube playlist ](https://www.youtube.com/playlist?list=PLT7NbkyNWaqbyBMzdySdqjnfUFxt8rnU_)
 * [Github repo](https://github.com/raula09/CHIP-8_Emulator)
+* [Chip8 Reference Manual](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM)
 
 
 
