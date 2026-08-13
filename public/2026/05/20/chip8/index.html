@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="So recently I completed my long awaited&#x2F;procrastinated project of building a CHIP-8 emulator&#x2F;interpreter in C language. Learnt a lot about how to actually use pointers , how bitwise manipula">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CHIP-8 emulator in C">
+<meta property="og:url" content="http://kamath.app/2026/05/20/chip8/index.html">
+<meta property="og:site_name" content="Atul Kamath">
+<meta property="og:description" content="So recently I completed my long awaited&#x2F;procrastinated project of building a CHIP-8 emulator&#x2F;interpreter in C language. Learnt a lot about how to actually use pointers , how bitwise manipula">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-20T11:30:00.000Z">
+<meta property="article:modified_time" content="2026-05-22T17:10:04.573Z">
+<meta property="article:author" content="Atul Kamath">
+<meta property="article:tag" content="Chip-8">
+<meta property="article:tag" content="raylib">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="pointers">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>CHIP-8 emulator in C</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/random-resources/">Random Stuff</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/pixelpip">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/09/26/pihole/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://kamath.app/2026/05/20/chip8/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://kamath.app/2026/05/20/chip8/&text=CHIP-8 emulator in C"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://kamath.app/2026/05/20/chip8/&is_video=false&description=CHIP-8 emulator in C"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CHIP-8 emulator in C&body=Check out this article: http://kamath.app/2026/05/20/chip8/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://kamath.app/2026/05/20/chip8/&name=CHIP-8 emulator in C&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://kamath.app/2026/05/20/chip8/&t=CHIP-8 emulator in C"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Chip-8"><span class="toc-number">1.</span> <span class="toc-text">Why Chip-8?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-setup"><span class="toc-number">2.</span> <span class="toc-text">The setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-hardware"><span class="toc-number">2.1.</span> <span class="toc-text">The hardware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-core-functions"><span class="toc-number">2.2.</span> <span class="toc-text">The core functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main-c-file"><span class="toc-number">2.3.</span> <span class="toc-text">main.c file</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        CHIP-8 emulator in C
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Atul Kamath</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-05-20T11:30:00.000Z" class="dt-published" itemprop="datePublished">2026-05-20</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Dev/">Dev</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/C/" rel="tag">C</a>, <a class="p-category" href="/tags/Chip-8/" rel="tag">Chip-8</a>, <a class="p-category" href="/tags/pointers/" rel="tag">pointers</a>, <a class="p-category" href="/tags/raylib/" rel="tag">raylib</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>So recently I completed my long awaited&#x2F;procrastinated project of building a CHIP-8 emulator&#x2F;interpreter in C language. Learnt a lot about how to actually use pointers , how bitwise manipulation works , some raylib and other fun stuff.</p>
+<p>Check out the project here <a target="_blank" rel="noopener" href="https://github.com/Pixelpip/CHIP-8">Github repo</a></p>
+<h2 id="Why-Chip-8"><a href="#Why-Chip-8" class="headerlink" title="Why Chip-8?"></a>Why Chip-8?</h2><p>Because its one of the easiest to implement emulator compared to anything like NES or GBA with very few opcodes to handle and also is kind of an introduction to systems programming .</p>
+<h2 id="The-setup"><a href="#The-setup" class="headerlink" title="The setup"></a>The setup</h2><p>I’ll go over the implementation in the way I went about it so if anyone wants to implemenmt the same it would be easier if you follow the same sequence .</p>
+<h3 id="The-hardware"><a href="#The-hardware" class="headerlink" title="The hardware"></a>The hardware</h3><p>The hardware can be defined entirely within a struct with just a few unsigned integer of varying width , check out the below code and its comment. All of which are placed in a header file called <code>Chip8.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">uint8_t</span> ram[MEM_SIZE]; <span class="comment">//8bit=1byte , 4*1024 bytes=4KB</span></span><br><span class="line">    <span class="type">uint8_t</span> V[NUM_REGISTER]; <span class="comment">// V0-VF registers</span></span><br><span class="line">    <span class="type">uint16_t</span> I; <span class="comment">// memory address storage register </span></span><br><span class="line">    <span class="type">uint16_t</span> PC;<span class="comment">// program counter register</span></span><br><span class="line">    <span class="type">uint16_t</span> SP; <span class="comment">// stack pointer</span></span><br><span class="line">    <span class="type">uint16_t</span> <span class="built_in">stack</span>[STACK_SIZE]; <span class="comment">// 16 level stack totalling 32 byte</span></span><br><span class="line">    <span class="type">uint8_t</span> keypad[NUM_KEYS]; <span class="comment">// hex keypad 0-F</span></span><br><span class="line">    <span class="type">uint8_t</span> display[SW*SH]; <span class="comment">// 32 rows(height) 64 columns(width) </span></span><br><span class="line">    <span class="type">uint8_t</span> ST,DT; <span class="comment">//sound registers ST=Sound timer DT=Delay Timer </span></span><br><span class="line">    <span class="type">uint16_t</span> opcode; <span class="comment">//current opcode </span></span><br><span class="line">    <span class="type">uint8_t</span> draw_flag; <span class="comment">//should draw or not</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;Chip8;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Here are the few Constants I used in the struct </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MEM_SIZE 4096</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NUM_REGISTER 16</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> STACK_SIZE 16</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NUM_KEYS 16</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SW 64</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SH 32</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FONT_SIZE 80</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FONT_ADDR 0x50 </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PGM_START 0x200</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>You can check out the CHIP-8 reference manual linked below to understand why each component is sized as above.As for the display I decided to use a 1D array with row major ordering over a 2D array because the pointer arithmetic is easier for a 1D array.</p>
+<h3 id="The-core-functions"><a href="#The-core-functions" class="headerlink" title="The core functions"></a>The core functions</h3><p>There are 3 important functions  defined within the <code>Chip8.h</code> file which handle basically 90% of the project . I’ll go over it now one by one.</p>
+<ul>
+<li><code>void init_chip8(Chip8 *chip8); </code></li>
+</ul>
+<p>This function is used to just set the entire RAM array to 0 so we can start writing data to it without any garbage values interrupting any OPcode implementations later and also load the Fonts for each character into the ram starting at the address 0x50.</p>
+<ul>
+<li>void load_rom(Chip8 *c,const char *filename);</li>
+</ul>
+<p>This function is used to load the actual game rom using the FILE type and check if the rom actually contains any data using the &#96;&#96;&#96;byte_read&#96;&#96; variable and throw errors accordingly.</p>
+<ul>
+<li><code>void emulate_cycle(Chip8 *c);</code></li>
+</ul>
+<p>Now this function is the heart of the program because it handles how the opcodes fetched from the roms are worked out so that raylib can draw appropriately on screen.</p>
+<p>The hardest part of implementing this function was  how do I even start writing this function and how do I link it with other parts of the program if that makes sense since it was my first project actually using C and I was confused coming from mostly from javascript  and python like languages where packages setup a lot of the project beforehand . I checked out a few video series on implementing CHIP8 emulators on youtube but ultimately went ahead with watching the 6 part series by Queso Fuego but I wanted to build something that would be more simplified, not have the entire project in a single source file and used raylib instead of SDL2 because raylib was the first graphics library I ever used and I wanted to try using it in an actual project.</p>
+<p>Then I came across a github repo by Raul Alazovi which implemented the whole emulator in a very beautiful manner which I ended up implementing on my project . All the references will be linked down below .</p>
+<p>So to get things started I’ll go over the function’s implementation mainly about what I did before the OPcodes where processed because processing the OPcode is fairly easy by reading just the reference manual.</p>
+<ul>
+<li><code>uint16_t opcode=(chip8-&gt;ram[chip8-&gt;PC]&lt;&lt;8)|(chip8-&gt;ram[chip8-&gt;PC+1]); </code></li>
+</ul>
+<p>Since the RAM in CHIP8 is of 8bits but each OPcode is of length 16bits each so we need to merge the two parts into a single 16bit and store it into a 16bit variable . The first half or 8bits of the opcode is fetched from where the Program Counter currently points to and then shifting those bits to the right by 8 places then OR it with the next 8bits within the RAM resulting in a 16bit full opcode.</p>
+<p>Then we need to make the PC point to two places above in the RAM so that the next OPcode can be fetched.</p>
+<ul>
+<li><code>NNN</code> this variable is used to specify the 12 bit range of the address to jump to </li>
+<li><code>KK</code> it is a 8bit long number which is to be stored within the general purpose registers.</li>
+<li><code>n</code> this is used to find how many rows tall each sprite is </li>
+<li><code>X &amp; Y</code> these are pointers which tell us which general purpose register(V[]) to use</li>
+</ul>
+<p>Now onto the best part , processing the opcodes . After reffering to the github repo I mentioned earlier , there all the OPcodes were divided based on their Hexadecimal digits and based on that they were processed using switch cases .</p>
+<p>like for example each opcode is of 16bits which means each hex digit is 4bits so each opcode would be <code>0xABCD</code> .</p>
+<p>We can create switch statements such that we first check the Most significant 4bits which is ‘A’ so if a opcode starts with 0x1… we first used a switch statement such as <code>switch(opcode&amp;0xF000)</code> which ends up fetching the first 4bits and if it corresponds to 0x1… we set up switch cases for that and if the opcode has further bits that need to be checked we can just create a nested swtich for that particular case using the same method and process each opcode in this manner .You can check the implementation of opcode 0x8000 to understand what I mean.</p>
+<p>Most of the opcodes were fairly straighforward to implement by just reading the reference manual but <code>0xD000</code> was the hardest to implement in this project.</p>
+<p>This is the Opcode that manages the pixel drawing on screen so it inlvoves some degree of math. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span> x_pos = chip8-&gt;V[X] % SW;</span><br><span class="line"><span class="type">uint8_t</span> y_pos = chip8-&gt;V[Y] % SH;</span><br></pre></td></tr></table></figure>
+
+<p>The main working of this opcode is that it sets the coordinates on where each pixel should be white or black on screen using (V[X],V[Y]) coordinates , since the V[] registers are 8 bits unsigned it can store values greater than 64 or 32 which is the screen size of the Chip8 so to wrap around the coordinates we use the modulus operator with Screen width and heigh then wrap around so that coordinates never go off screen using the code snippet above. </p>
+<p>Then we assume there is no collison i.e overlapping of pixels at a specific coordinate on screen <code>chip8-&gt;V[0xF] = 0;</code> like when the ball hits player in pong game two objects may reach the same pixel at the same time which is what we mean by a collison .</p>
+<p>Then we fetch each row from the RAM and store the byte into the <code>sprite_byte</code> variable </p>
+<p>After which we need to &amp; it with the same variable with the number 8 which is right shifted in iteration of column in each row , creating a sort of sliding mask and if after the bitwise operation we find that the bit is 1 then we draw on that particular coordinate using row major ordering of the display and then set the draw flag to 1 indicating we have been drawing on this position .</p>
+<h3 id="main-c-file"><a href="#main-c-file" class="headerlink" title="main.c file"></a>main.c file</h3><p>In this file i initalized raylib and also take the inputs from user for which ROM to run .<br>All the raylib functions are placed within a while loop which runs as long as the window isnt closed .<br>I used the raylib Key definitions which correspond to the qwerty keyboards we use today and mapped them to the appropriate keys which are used by CHIP8 devices of back then.</p>
+<p>Most modern computers run on 60Hz and the CPU speed of CHIP8 was approx 600MHz so we can process about 10 opcodes per frame so I used a 10 iteration for loop and passsed the struct of the device it to the emulate_cycle function via pass by reference.</p>
+<p>The DT&#x2F;delay timer is used to time the events when a ROM is running like for example a running pong game might need the DT to determine when again the ball has to move on screen . I havent yet implemented Sound timer yet so its just there without any usage as of now but it would work similarly i.e to just provide a beep when a event happens.</p>
+<p>Now onto the part where raylib actually draws on screen . Its just a simple for loop where each element in the matrix is checked (used row major calculation here) and if it is not 0 which means its 1 then we actually draw White color on screen .</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>So that was my writing on how I implemented a emulator , it was easier than I expected it to be though there are few things I still do not know how to fix but anyone reading this does drop a comment below or a PR maybe on the repo.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLT7NbkyNWaqbyBMzdySdqjnfUFxt8rnU_">Youtube playlist </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/raula09/CHIP-8_Emulator">Github repo</a></li>
+<li><a target="_blank" rel="noopener" href="http://devernay.free.fr/hacks/chip8/C8TECH10.HTM">Chip8 Reference Manual</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+
+
+    <div class="blog-post-comments">
+       <script src="https://giscus.app/client.js"
+        data-repo="pixelpip/Portfolio"
+        data-repo-id="R_kgDOPboscg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOPboscs4CuNwx"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/random-resources/">Random Stuff</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/pixelpip">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Chip-8"><span class="toc-number">1.</span> <span class="toc-text">Why Chip-8?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-setup"><span class="toc-number">2.</span> <span class="toc-text">The setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-hardware"><span class="toc-number">2.1.</span> <span class="toc-text">The hardware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-core-functions"><span class="toc-number">2.2.</span> <span class="toc-text">The core functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main-c-file"><span class="toc-number">2.3.</span> <span class="toc-text">main.c file</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://kamath.app/2026/05/20/chip8/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://kamath.app/2026/05/20/chip8/&text=CHIP-8 emulator in C"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://kamath.app/2026/05/20/chip8/&is_video=false&description=CHIP-8 emulator in C"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CHIP-8 emulator in C&body=Check out this article: http://kamath.app/2026/05/20/chip8/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://kamath.app/2026/05/20/chip8/&title=CHIP-8 emulator in C"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://kamath.app/2026/05/20/chip8/&name=CHIP-8 emulator in C&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://kamath.app/2026/05/20/chip8/&t=CHIP-8 emulator in C"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    <!--Copyright &copy;
+    
+    
+    2025-2026
+    Atul Kamath-->
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/random-resources/">Random Stuff</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/pixelpip">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
