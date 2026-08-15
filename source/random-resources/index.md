@@ -16,14 +16,14 @@ A small collection of things I like to keep around for inspiration, learning, an
 
 ## Linux & systems
 
-- [Linux kernel module dev](https://www.youtube.com/playlist?list=PLCGpd0Do5-I3b5TtyqeF1UdyD4C-S-dMa) - playlist which taught me kernel module development
+- [Linux kernel module dev](https://www.youtube.com/playlist?list=PLCGpd0Do5-I3b5TtyqeF1UdyD4C-S-dMa) - playlist which taught me kernel module development 
 - [Arch Wiki](https://wiki.archlinux.org/) — the best deep-dive resource if you like understanding how systems work.
 - [bootlin](https://elixir.bootlin.com/linux/) - linux source code lookup 
 
 ## Software & tools
 
-- [GNU Emacs](https://www.gnu.org/software/emacs/) — a powerful, keyboard-driven editor for people who enjoy building their environment.
-- [Sway Window Manager](https://swaywm.org/) — a tiling compositor that feels both minimal and extremely capable.
+- [GNU Emacs](https://www.gnu.org/software/emacs/) — something more than text editor that i still havent learned how to use.
+- [Sway Window Manager](https://swaywm.org/) — minimal WM I'm using since 2024
 - [The Linux Documentation Project](https://tldp.org/) — a classic reference for command-line and system learning.
 - [wotaku](https://wotaku.wiki/) - wiki to everything about aniyomi/mihon app.
 
