@@ -40,6 +40,7 @@ A small collection of things I like to keep around for inspiration, learning, an
 - [Why I Love Linux](https://www.youtube.com/watch?v=9Q7s2v84klM) — a nice nostalgic reminder of why this ecosystem keeps drawing people in.
 - [Digital Design and Comp Arch](https://pages.hmc.edu/harris/ddca/ddcarv/ddcarv_videos.html) - from harris  
 - [hello algo](https://www.hello-algo.com/) - a quick look on algorithms and data strcutures. 
+- [Algorithms in C](https://github.com/TheAlgorithms/C) - algorithms implemented in C 
 
 ## Other interesting things
 
