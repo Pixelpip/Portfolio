@@ -14,6 +14,11 @@ A small collection of things I like to keep around for inspiration, learning, an
 - [crafting interpreters](https://craftinginterpreters.com/contents.html) - writing an interpreter.
 
 
+## Some great tech blogs from other people
+- [Dimitry](https://dmitry.gr/) - contains some great projects and writings.
+- [Uros Popovic](https://popovicu.com/) - tech blogs and projects.
+
+
 ## Linux & systems
 
 - [Linux kernel module dev](https://www.youtube.com/playlist?list=PLCGpd0Do5-I3b5TtyqeF1UdyD4C-S-dMa) - playlist which taught me kernel module development 
